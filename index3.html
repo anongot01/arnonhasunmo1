@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="th" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N&amp;K เบเกอร์รี่ นครสวรรค์</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Prompt', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: #F59E0B;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(139, 90, 43, 0.2);
+    }
+    .category-tab {
+      transition: all 0.3s ease;
+    }
+    .category-tab.active {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+    .chatbot-container {
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #8B5A2B 0%, #A0522D 50%, #CD853F 100%);
+    }
+    .chat-bubble {
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .price-tag {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    }
+    .wholesale-tag {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    }
+    html, body {
+      height: 100%;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-amber-50 overflow-auto">
+  <div class="min-h-full w-full"><!-- Navigation -->
+   <nav class="bg-gradient-to-r from-amber-900 via-amber-800 to-amber-900 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex items-center justify-between h-16"><!-- Logo -->
+      <div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center shadow-lg"><span class="text-2xl"><a href="index.html"><img src="nk.png"></span>       </div>
+       <div>
+        <h1 id="nav-shop-name" class="text-white font-bold text-lg">N&amp;K เบเกอร์รี่</h1>
+        <p class="text-amber-200 text-xs">นครสวรรค์</p>
+       </div>
+      </div><!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8"><a href="index.html" class="nav-link text-white font-medium hover:text-yellow-300">🏠 หน้าแรก</a> <a href="index2.html" class="nav-link text-white font-medium hover:text-yellow-300">🛒 สินค้า</a> <a href="index3.html" class="nav-link text-white font-medium hover:text-yellow-300">🎁 โปรโมชั่น</a> <a href="index4.html" class="nav-link text-white font-medium hover:text-yellow-300">📖 เกี่ยวกับเรา</a> <a href="index5.html" class="nav-link text-white font-medium hover:text-yellow-300">📞 ติดต่อเรา</a>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">☰</button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-amber-800 pb-4"><a href="index.html" class="block px-4 py-2 text-white hover:bg-amber-700">🏠 หน้าแรก</a> <a href="index2.html" class="block px-4 py-2 text-white hover:bg-amber-700">🛒 สินค้า</a> <a href="index3.html" class="block px-4 py-2 text-white hover:bg-amber-700">🎁 โปรโมชั่น</a> <a href="index4" class="block px-4 py-2 text-white hover:bg-amber-700">📖 เกี่ยวกับเรา</a> <a href="index5.html" class="block px-4 py-2 text-white hover:bg-amber-700">📞 ติดต่อเรา</a>
+    </div>
+   </nav>
+    <section id="promotion" class="py-16 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900">
+    <div class="max-w-7xl mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">🎁 โปรโมชั่นพิเศษ</h2>
+     <p class="text-center text-blue-200 mb-12">ข้อเสนอสุดพิเศษสำหรับลูกค้าคนพิเศษ</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Promo 1 -->
+      <div class="bg-gradient-to-br from-yellow-400 to-amber-500 rounded-2xl p-6 shadow-xl transform hover:scale-105 transition-all">
+       <div class="text-5xl mb-4">
+        📦
+       </div>
+       <h3 class="text-2xl font-bold text-amber-900 mb-2">ราคาส่งสุดคุ้ม</h3>
+       <p class="text-amber-800 mb-4">สั่งซื้อรวม 30 กล่องขึ้นไป รับราคาส่งทันที ประหยัดได้มากกว่า!</p>
+       <div class="bg-white/30 rounded-lg p-3">
+        <p class="text-amber-900 font-bold">เงื่อนไข: สั่งรวม 30 กล่องขึ้นไป</p>
+       </div>
+      </div><!-- Promo 2 -->
+      <div class="bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl p-6 shadow-xl transform hover:scale-105 transition-all">
+       <div class="text-5xl mb-4">
+        🚗
+       </div>
+       <h3 class="text-2xl font-bold text-white mb-2">ส่งฟรี!</h3>
+       <p class="text-green-100 mb-4">ส่งฟรีในเขตเมืองนครสวรรค์ นอกเขตคิดค่าส่งตามระยะทาง</p>
+       <div class="bg-white/30 rounded-lg p-3">
+        <p class="text-white font-bold">เฉพาะในเขตเมือง</p>
+       </div>
+      </div>
+     </div>
+    </div>
+
+   </section>   <footer class="bg-amber-950 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+     <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center"><span class="text-xl"><img src="nk.png"></span>
+      </div><span id="footer-shop-name" class="text-white font-bold text-xl">N&amp;K เบเกอร์รี่ นครสวรรค์</span>
+     </div>
+     <p class="text-amber-300 text-sm">© 2026 N&amp;K Bakery. All rights reserved.</p>
+     <p class="text-amber-400 text-xs mt-2">ความอร่อยจากใจ ส่งถึงมือคุณ 💛</p>
+    </div>
+   </footer></div></body></html>

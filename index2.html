@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="th" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N&amp;K เบเกอร์รี่ นครสวรรค์</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Prompt', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: #F59E0B;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(139, 90, 43, 0.2);
+    }
+    .category-tab {
+      transition: all 0.3s ease;
+    }
+    .category-tab.active {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+    .chatbot-container {
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #8B5A2B 0%, #A0522D 50%, #CD853F 100%);
+    }
+    .chat-bubble {
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .price-tag {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    }
+    .wholesale-tag {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    }
+    html, body {
+      height: 100%;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-amber-50 overflow-auto">
+  <div class="min-h-full w-full"><!-- Navigation -->
+   <nav class="bg-gradient-to-r from-amber-900 via-amber-800 to-amber-900 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex items-center justify-between h-16"><!-- Logo -->
+      <div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center shadow-lg"><span class="text-2xl"><a href="index.html"><img src="nk.png"></span>       </div>
+       <div>
+        <h1 id="nav-shop-name" class="text-white font-bold text-lg">N&amp;K เบเกอร์รี่</h1>
+        <p class="text-amber-200 text-xs">นครสวรรค์</p>
+       </div>
+ </div><!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8"><a href="index.html" class="nav-link text-white font-medium hover:text-yellow-300">🏠 หน้าแรก</a> <a href="index2.html" class="nav-link text-white font-medium hover:text-yellow-300">🛒 สินค้า</a> <a href="index3.html" class="nav-link text-white font-medium hover:text-yellow-300">🎁 โปรโมชั่น</a> <a href="index4.html" class="nav-link text-white font-medium hover:text-yellow-300">📖 เกี่ยวกับเรา</a> <a href="index5.html" class="nav-link text-white font-medium hover:text-yellow-300">📞 ติดต่อเรา</a>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">☰</button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-amber-800 pb-4"><a href="index.html" class="block px-4 py-2 text-white hover:bg-amber-700">🏠 หน้าแรก</a> <a href="index2.html" class="block px-4 py-2 text-white hover:bg-amber-700">🛒 สินค้า</a> <a href="index3.html" class="block px-4 py-2 text-white hover:bg-amber-700">🎁 โปรโมชั่น</a> <a href="index4" class="block px-4 py-2 text-white hover:bg-amber-700">📖 เกี่ยวกับเรา</a> <a href="index5.html" class="block px-4 py-2 text-white hover:bg-amber-700">📞 ติดต่อเรา</a>
+    </div>
+   </nav>
+        <section id="products" class="py-16 bg-gradient-to-b from-amber-50 to-amber-100">
+    <div class="max-w-7xl mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-4">🛒 สินค้าของเรา</h2>
+     <p class="text-center text-amber-700 mb-8">เลือกชมสินค้าตามหมวดหมู่</p><!-- Category Tabs -->
+     <div class="flex flex-wrap justify-center gap-4 mb-12"><button onclick="showCategory('cake')" class="category-tab active px-6 py-3 rounded-full font-bold shadow-lg bg-amber-200 text-amber-800" data-category="cake">🎂 เค้ก </button> <button onclick="showCategory('bread')" class="category-tab px-6 py-3 rounded-full font-bold shadow-lg bg-amber-200 text-amber-800" data-category="bread"> 🍞 ขนมปัง </button> <button onclick="showCategory('drink')" class="category-tab px-6 py-3 rounded-full font-bold shadow-lg bg-amber-200 text-amber-800" data-category="drink"> 🥤 เครื่องดื่ม </button>
+     </div><!-- Cake Products -->
+     <div id="cake-products" class="product-category">
+      <h3 class="text-2xl font-bold text-amber-800 mb-6 text-center">🎂 หมวดเค้ก</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Product Card 1 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center"><span class="text-7xl"><img src="c7.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กท็อฟฟี่</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กช็อกโกแลตหน้าคาราเมลเม็ดมะม่วง หอมนุ่ม</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div><!-- Product Card 2 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="c8.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กสาลี่มะพร้าว</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กสารี่มะพร้าวโรยหน้าดวยน้ำตาล หวานหอม</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div><!-- Product Card 3 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-green-200 to-green-300 flex items-center justify-center"><span class="text-7xl"><img src="c9.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กโบราณ ฝอยทอง</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กฝอยทอง ท็อปด้วยเจลลี่แดง</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div><!-- Product Card 4 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-orange-200 to-yellow-200 flex items-center justify-center"><span cla13ss="text-7xl"><img src="c10.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กโบราณ ครีมฝอย</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กครีมฝอยทอง รสชาติเยี่ยม หวานหอมลงตัว</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div>
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="c2.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กบลูเบอรี่</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กแยมบลูเบอรี่ หวานเปรี้ยวกลมกล่อม</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿30</span>
+         </div>
+        </div>
+       </div>
+               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="c3.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กสตรอเบอรี่</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กแยมสตรอเบอรี่ เปรี้ยวอมหวานลงตัว</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿30</span>
+         </div>
+        </div>
+       </div>
+               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="c4.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กผลไม้</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กผลไม้รสเปรี้ยว หวานครีมลงตัว</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿30</span>
+         </div>
+        </div>
+       </div>
+               <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="c5.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เค้กมะพร้าวอ่อน</h4>
+         <p class="text-amber-600 text-sm mb-3">เค้กมะพร้าวอ่อน หอมเนื้อมะพร้าวเน้นๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿30</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Bread Products -->
+     <div id="bread-products" class="product-category hidden">
+      <h3 class="text-2xl font-bold text-amber-800 mb-6 text-center">🍞 หมวดขนมปัง</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Bread 1 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-200 to-yellow-200 flex items-center justify-center"><span class="text-7xl"><img src="p4.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังครีมฝอย</h4>
+         <p class="text-amber-600 text-sm mb-3">หวานละมุน</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿20</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿15</span>
+         </div>
+        </div>
+       </div><!-- Bread 2 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-orange-200 to-amber-200 flex items-center justify-center"><span class="text-7xl"><img src="p1.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังไส้หมูหยอง</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังนุ่มไส้หมูหยองแน่นๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿20</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿15</span>
+         </div>
+        </div>
+       </div><!-- Bread 3 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-yellow-200 to-amber-300 flex items-center justify-center"><span class="text-7xl"><img src="p2.jpg" width="180" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังกระเทียม</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังกระเทียมหอมกรุ่น</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿20</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿15</span>
+         </div>
+        </div>
+       </div><!-- Bread 4 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center"><span class="text-7xl"><img src="p3.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังแยมใบเตย</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังไส้ใบเตยทะลักจุกๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿20</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿15</span>
+         </div>
+        </div>
+       </div><!-- Bread 5 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-300 to-orange-300 flex items-center justify-center"><span class="text-7xl"><img src="p5.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังไส้ครีม</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังไส้ครีมนุ่มละมุน</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿20</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿15</span>
+         </div>
+        </div>
+       </div><!-- Bread 6 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-yellow-300 to-amber-200 flex items-center justify-center"><span class="text-7xl"><img src="p6.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังใส้ปั้นสับปะรส</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังไส้สับปะรส เปรี้ยวหวานลงตัว</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div>
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-orange-200 to-amber-200 flex items-center justify-center"><span class="text-7xl"><img src="p7.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังไส้ปั้นชาเขียว</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังนุ่มๆไส้ชาเขียวเข้มๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿15</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿13</span>
+         </div>
+        </div>
+       </div>
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-orange-200 to-amber-200 flex items-center justify-center"><span class="text-7xl"><img src="p8.jpg" width="135" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ขนมปังโดนัทช็อคโกแล็ต</h4>
+         <p class="text-amber-600 text-sm mb-3">ขนมปังโดนัทช็อคโกแล็ตเยิ้มๆๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> <span class="wholesale-tag text-white px-3 py-1 rounded-full text-sm font-bold">ส่ง ฿28</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Drink Products -->
+     <div id="drink-products" class="product-category hidden">
+      <h3 class="text-2xl font-bold text-amber-800 mb-6 text-center">🥤 หมวดเครื่องดื่ม</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Drink 1 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-300 to-yellow-300 flex items-center justify-center"><span class="text-7xl"><img src="t1.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">อเมริกาโน่น้ำส้ม</h4>
+         <p class="text-amber-600 text-sm mb-3">กาแฟอเมริกาโน่น้ำส้ม สดชื่น</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span>
+         </div>
+        </div>
+       </div><!-- Drink 2 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-green-300 to-emerald-300 flex items-center justify-center"><span class="text-7xl"><img src="t2.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">อเมริกาโน่ลิ้นจี่</h4>
+         <p class="text-amber-600 text-sm mb-3">อเมริกาโน่ลิ้นจี่ รสชาติลงตัวสุดๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> 
+         </div>
+        </div>
+       </div><!-- Drink 3 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-orange-300 to-amber-300 flex items-center justify-center"><span class="text-7xl"><img src="t3.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ชามะนาว</h4>
+         <p class="text-amber-600 text-sm mb-3">ชามะนาวแท้ค้นสด เปรี้ยวหวานลงตัว</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span>
+         </div>
+        </div>
+       </div><!-- Drink 4 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-pink-300 to-rose-300 flex items-center justify-center"><span class="text-7xl"><img src="t4.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ชาไทย</h4>
+         <p class="text-amber-600 text-sm mb-3">หอมชาไทยเน้นๆ</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span>
+         </div>
+        </div>
+       </div><!-- Drink 5 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-yellow-200 to-orange-200 flex items-center justify-center"><span class="text-7xl"><img src="t5.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">เอสเพรสโซ่</h4>
+         <p class="text-amber-600 text-sm mb-3">กลมกล่อมเข้มข้น</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span>
+         </div>
+        </div>
+       </div><!-- Drink 6 -->
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-400 to-yellow-300 flex items-center justify-center"><span class="text-7xl"><img src="t6.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ลาเต้</h4>
+         <p class="text-amber-600 text-sm mb-3">รสชาติละมุน ดื่มง่าย</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span>
+         </div>
+        </div>
+      </div>
+             <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-400 to-yellow-300 flex items-center justify-center"><span class="text-7xl"><img src="t7.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">ชาเขียว</h4>
+         <p class="text-amber-600 text-sm mb-3">รสชาติละมุน ดื่มง่าย</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> 
+         </div>
+        </div>
+      </div>
+       <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="h-48 bg-gradient-to-br from-amber-400 to-yellow-300 flex items-center justify-center"><span class="text-7xl"><img src="t8.jpg" width="145" height="auto"></span>
+        </div>
+        <div class="p-5">
+         <h4 class="font-bold text-amber-900 text-lg mb-2">คาปูชิโน่</h4>
+         <p class="text-amber-600 text-sm mb-3">อร่อยกลมกล่อม</p>
+         <div class="flex gap-2 mb-3"><span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">ปลีก ฿35</span> 
+         </div>
+        </div>
+<script>
+    // Default configuration
+    const defaultConfig = {
+      shop_name: 'N&K เบเกอร์รี่',
+      shop_tagline: '✨ ความอร่อยจากใจ ส่งถึงมือคุณ ✨',
+      phone_number: '0989793603',
+      address: 'ตลาดสดเทศบาลนครสวรรค์ จ.นครสวรรค์',
+      primary_color: '#92400E',
+      secondary_color: '#1E3A8A',
+      accent_color: '#F59E0B',
+      text_color: '#451A03',
+      background_color: '#FFFBEB'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+            },
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (v) => { cfg.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (v) => { cfg.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
+            },
+            {
+              get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (v) => { cfg.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['shop_name', cfg.shop_name || defaultConfig.shop_name],
+          ['shop_tagline', cfg.shop_tagline || defaultConfig.shop_tagline],
+          ['phone_number', cfg.phone_number || defaultConfig.phone_number],
+          ['address', cfg.address || defaultConfig.address]
+        ])
+      });
+    }
+
+    function updateUI() {
+      // Update shop name
+      const shopName = config.shop_name || defaultConfig.shop_name;
+      document.getElementById('nav-shop-name').textContent = shopName;
+      document.getElementById('hero-shop-name').textContent = shopName;
+      document.getElementById('footer-shop-name').textContent = shopName + ' นครสวรรค์';
+      
+      // Update tagline
+      document.getElementById('hero-tagline').textContent = config.shop_tagline || defaultConfig.shop_tagline;
+      
+      // Update contact info
+      document.getElementById('contact-phone').textContent = config.phone_number || defaultConfig.phone_number;
+      document.getElementById('contact-address').textContent = config.address || defaultConfig.address;
+    }
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Category switching
+    function showCategory(category) {
+      // Hide all categories
+      document.querySelectorAll('.product-category').forEach(el => el.classList.add('hidden'));
+      
+      // Show selected category
+      document.getElementById(category + '-products').classList.remove('hidden');
+      
+      // Update tab styles
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.category === category) {
+          tab.classList.add('active');
+        }
+      });
+    }
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu if open
+          document.getElementById('mobile-menu').classList.add('hidden');
+        }
+      });
+    });
+
+    // Initialize UI
+    updateUI();
+  </script>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Promotion Section -->
+   </div>
+
+ </nav>
+    <footer class="bg-amber-950 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+     <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center"><span class="text-xl"><img src="nk.png"></span>
+      </div><span id="footer-shop-name" class="text-white font-bold text-xl">N&amp;K เบเกอร์รี่ นครสวรรค์</span>
+     </div>
+     <p class="text-amber-300 text-sm">© 2026 N&amp;K Bakery. All rights reserved.</p>
+     <p class="text-amber-400 text-xs mt-2">ความอร่อยจากใจ ส่งถึงมือคุณ 💛</p>
+    </div>
+   </footer>
+</body>
+</html>
